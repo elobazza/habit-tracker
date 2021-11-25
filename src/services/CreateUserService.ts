@@ -6,12 +6,13 @@ interface IUserRequest {
     nome: string;
     login: string;
     senha: string;
+    email: string;
     dataNascimento: Date;
     foto: string;
 }
 
 class CreateUserService {
-    async execute({ nome, login, senha, dataNascimento, foto }: IUserRequest) {
+    async execute({ nome, login, senha, email, dataNascimento, foto }: IUserRequest) {
         const usersRepository = getCustomRepository(UserRepositories);
 
         if (!login) {
@@ -32,6 +33,7 @@ class CreateUserService {
             nome,
             login,
             senha: passwordHash,
+            email,
             dataNascimento,
             foto
         });

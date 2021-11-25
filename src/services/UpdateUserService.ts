@@ -5,7 +5,6 @@ interface IUserRequest {
     id: string;
     nome: string;
     login: string;
-    senha: string;
     email: string;
     dataNascimento: Date;
     foto: string;
@@ -27,6 +26,8 @@ class UpdateUserService {
         user.foto = foto;
 
         await userRepositories.update(id, user);
+
+        return user;
     }
 }
 
