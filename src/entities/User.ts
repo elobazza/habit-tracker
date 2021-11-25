@@ -14,9 +14,6 @@ class User {
     nome: string;
 
     @Column()
-    name: string;
-
-    @Column()
     login: string;
 
     @Exclude()
@@ -25,6 +22,9 @@ class User {
 
     @Column()
     dataNascimento: Date;
+
+    @Column()
+    email: string;
 
     @Column()
     foto: string;
