@@ -1,4 +1,4 @@
-import { hash } from "bcryptjs";
+import { compare, hash } from "bcryptjs";
 import { getCustomRepository } from "typeorm";
 import { UserRepositories } from "../repositories/UserRepositories";
 
@@ -16,13 +16,15 @@ class UpdatePasswordService {
             id
         });
 
-        if (user.senha == senha) {
-            const passwordHash = await hash(novaSenha, 8);
+        const passwordMatch = await compare(senha, user.senha);
 
-            user.senha = passwordHash;
-        } else {
+        if (!passwordMatch) {
             throw new Error("Senha errada");
         }
+
+        const passwordHash = await hash(novaSenha, 8);
+
+        user.senha = passwordHash;
 
         await userRepositories.update(id, user);
 

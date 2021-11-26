@@ -20,7 +20,7 @@ class User {
     @Column()
     senha: string;
 
-    @Column()
+    @Column({ name: "data_nascimento" })
     dataNascimento: Date;
 
     @Column()
