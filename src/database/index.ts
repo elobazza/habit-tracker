@@ -1,7 +1,5 @@
 import { createConnection } from "typeorm";
 
-console.log(process.env);
-
 createConnection({
     type: "postgres",
     host: String(process.env.DB_HOST),
