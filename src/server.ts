@@ -30,4 +30,4 @@ app.use(
     }
 );
 
-app.listen(5050, () => console.log("Server is running"));
+app.listen(process.env.PORT || 5050, () => console.log("Server is running"));
