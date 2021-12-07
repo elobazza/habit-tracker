@@ -5,9 +5,9 @@ import { config } from "dotenv";
 
 config();
 
-import { router } from "./routes";
-
 import "./database";
+
+import { router } from "./routes";
 
 const app = express();
 
