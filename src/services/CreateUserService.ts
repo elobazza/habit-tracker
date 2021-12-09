@@ -4,7 +4,6 @@ import { hash } from "bcryptjs";
 
 interface IUserRequest {
     nome: string;
-    login: string;
     senha: string;
     email: string;
     dataNascimento: Date;
@@ -12,15 +11,15 @@ interface IUserRequest {
 }
 
 class CreateUserService {
-    async execute({ nome, login, senha, email, dataNascimento, foto }: IUserRequest) {
+    async execute({ nome, senha, email, dataNascimento, foto }: IUserRequest) {
         const usersRepository = getCustomRepository(UserRepositories);
 
-        if (!login) {
-            throw new Error("Login incorreto");
+        if (!email) {
+            throw new Error("Email incorreto");
         }
 
         const userAlreadyExists = await usersRepository.findOne({
-            login,
+            email,
         });
 
         if (userAlreadyExists) {
@@ -31,7 +30,6 @@ class CreateUserService {
 
         const user = usersRepository.create({
             nome,
-            login,
             senha: passwordHash,
             email,
             dataNascimento,

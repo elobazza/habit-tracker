@@ -3,11 +3,11 @@ import { ShowUserService } from "../services/ShowUserService";
 
 class ShowUserController {
     async handle(request: Request, response: Response) {
-        const { id } = request.params;
+        const { idusuario } = request.params;
 
         const showUserService = new ShowUserService();
 
-        const user = await showUserService.execute(id);
+        const user = await showUserService.execute(idusuario);
 
         return response.json(user);
     }

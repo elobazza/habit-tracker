@@ -3,12 +3,12 @@ import { UpdateUserService } from "../services/UpdateUserService";
 
 class UpdateUserController {
     async handle(request: Request, response: Response) {
-        const { id } = request.params;
-        const { nome, login, email, dataNascimento, foto } = request.body;
+        const { idusuario } = request.params;
+        const { nome, email, dataNascimento, foto } = request.body;
 
         const updateUserService = new UpdateUserService();
 
-        const user = await updateUserService.execute({ id, nome, login, email, dataNascimento, foto });
+        const user = await updateUserService.execute({ idusuario, nome, email, dataNascimento, foto });
 
         return response.json(user);
     }

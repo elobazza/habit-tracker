@@ -16,9 +16,9 @@ const showUserController = new ShowUserController();
 router.post("/user", createUserController.handle);
 router.post("/login", authenticateUserController.handle);
 
-router.put("/user/:id", updateUserController.handle);
-router.put("/password/:id", updatePasswordController.handle);
+router.put("/user/:idusuario", updateUserController.handle);
+router.put("/password/:idusuario", updatePasswordController.handle);
 
-router.get("/user/:id", showUserController.handle);
+router.get("/user/:idusuario", showUserController.handle);
 
 export { router };

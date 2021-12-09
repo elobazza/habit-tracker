@@ -8,13 +8,10 @@ import { v4 as uuid } from "uuid";
 class User {
 
     @PrimaryGeneratedColumn('increment')
-    readonly id: string;
+    readonly idusuario: string;
 
     @Column()
     nome: string;
-
-    @Column()
-    login: string;
 
     @Exclude()
     @Column()

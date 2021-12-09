@@ -4,20 +4,20 @@ import { sign } from "jsonwebtoken";
 import { UserRepositories } from "../repositories/UserRepositories";
 
 interface IAuthenticateRequest {
-    login: string;
+    email: string;
     senha: string;
 }
 
 class AuthenticateUserService {
-    async execute({ login, senha }: IAuthenticateRequest) {
+    async execute({ email, senha }: IAuthenticateRequest) {
         const userRepositories = getCustomRepository(UserRepositories);
 
         const user = await userRepositories.findOne({
-            login,
+            email,
         });
 
         if (!user) {
-            throw new Error("Login/Password incorrect");
+            throw new Error("Email/Password incorrect");
         }
 
         const passwordMatch = await compare(senha, user.senha);
@@ -29,11 +29,11 @@ class AuthenticateUserService {
         // Gerar token
         const token = sign(
             {
-                login: user.login,
+                email: user.email,
             },
             "4f93ac9d10cb751b8c9c646bc9dbccb9",
             {
-                subject: user.id.toString(),
+                subject: user.idusuario.toString(),
                 expiresIn: "1d",
             }
         );

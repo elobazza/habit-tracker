@@ -3,12 +3,12 @@ import { AuthenticateUserService } from "../services/AuthenticateUserService";
 
 class AuthenticateUserController {
     async handle(request: Request, response: Response) {
-        const { login, senha } = request.body;
+        const { email, senha } = request.body;
 
         const authenticateService = new AuthenticateUserService();
 
         const token = await authenticateService.execute({
-            login,
+            email,
             senha,
         });
 

@@ -2,9 +2,8 @@ import { getCustomRepository } from "typeorm";
 import { UserRepositories } from "../repositories/UserRepositories";
 
 interface IUserRequest {
-    id: string;
+    idusuario: string;
     nome: string;
-    login: string;
     email: string;
     dataNascimento: Date;
     foto: string;
@@ -12,20 +11,19 @@ interface IUserRequest {
 
 
 class UpdateUserService {
-    async execute({ id, nome, login, email, dataNascimento, foto }: IUserRequest) {
+    async execute({ idusuario, nome, email, dataNascimento, foto }: IUserRequest) {
         const userRepositories = getCustomRepository(UserRepositories);
 
         let user = await userRepositories.findOne({
-            id
+            idusuario
         });
 
         user.nome = nome;
-        user.login = login;
         user.email = email;
         user.dataNascimento = dataNascimento;
         user.foto = foto;
 
-        await userRepositories.update(id, user);
+        await userRepositories.update(idusuario, user);
 
         return user;
     }

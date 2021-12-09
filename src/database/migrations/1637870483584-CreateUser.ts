@@ -8,18 +8,12 @@ export class CreateUser1637870483584 implements MigrationInterface {
                 name: "usuario",
                 columns: [
                     {
-                        name: "id",
-                        type: "integer",
+                        name: "idusuario",
+                        type: "serial",
                         isPrimary: true,
-                        isNullable: false,
                     },
                     {
                         name: "nome",
-                        type: "varchar(100)",
-                        isNullable: false,
-                    },
-                    {
-                        name: "login",
                         type: "varchar(100)",
                         isNullable: false,
                     },

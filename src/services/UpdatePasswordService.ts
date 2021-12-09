@@ -3,17 +3,17 @@ import { getCustomRepository } from "typeorm";
 import { UserRepositories } from "../repositories/UserRepositories";
 
 interface IUserRequest {
-    id: string;
+    idusuario: string;
     senha: string;
     novaSenha: string;
 }
 
 class UpdatePasswordService {
-    async execute({ id, senha, novaSenha }: IUserRequest) {
+    async execute({ idusuario, senha, novaSenha }: IUserRequest) {
         const userRepositories = getCustomRepository(UserRepositories);
 
         let user = await userRepositories.findOne({
-            id
+            idusuario
         });
 
         const passwordMatch = await compare(senha, user.senha);
@@ -26,7 +26,7 @@ class UpdatePasswordService {
 
         user.senha = passwordHash;
 
-        await userRepositories.update(id, user);
+        await userRepositories.update(idusuario, user);
 
         return user;
     }
