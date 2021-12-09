@@ -1,5 +1,20 @@
 import { createConnection } from "typeorm";
 
+const extra = {};
+
+const localEnv = String(process.env.NODE_ENV) === 'local';
+
+if (localEnv) {
+    Object.assign(extra, { ssl: false });
+}
+else {
+    Object.assign(extra, {
+        ssl: {
+            rejectUnauthorized: false,
+        }
+    });
+}
+
 createConnection({
     name: "default",
     type: "postgres",
@@ -15,4 +30,5 @@ createConnection({
         String(process.env.TYPEORM_MIGRATIONS),
     ],
     migrationsRun: true,
+    extra,
 });
