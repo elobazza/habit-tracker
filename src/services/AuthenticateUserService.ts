@@ -38,7 +38,9 @@ class AuthenticateUserService {
             }
         );
 
-        return token;
+        user.token = token;
+
+        return user;
     }
 }
 

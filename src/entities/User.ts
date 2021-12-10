@@ -25,6 +25,8 @@ class User {
 
     @Column()
     foto: string;
+
+    token: string;
 }
 
 export { User }
