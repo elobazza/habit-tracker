@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { ListActiveHabitsByUserService } from "../services/ListActiveHabitsByUserService";
+import { ListAllHabitsByUserService } from "../services/ListAllHabitsByUserService";
 
-class ListActiveHabitsByUserController {
+class ListAllHabitsByUserController {
     async handle(request: Request, response: Response) {
 
         const { idusuario } = request.params;
 
-        const listHabitsService = new ListActiveHabitsByUserService();
+        const listHabitsService = new ListAllHabitsByUserService();
 
         const habits = await listHabitsService.execute(
             idusuario
@@ -16,4 +16,4 @@ class ListActiveHabitsByUserController {
     }
 }
 
-export { ListActiveHabitsByUserController };
+export { ListAllHabitsByUserController };
