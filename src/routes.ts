@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
+import { CreateHabitController } from "./controllers/CreateHabitController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { ShowUserController } from "./controllers/ShowUserController";
 import { UpdatePasswordController } from "./controllers/UpdatePasswordController";
@@ -13,8 +14,12 @@ const updatePasswordController = new UpdatePasswordController();
 const authenticateUserController = new AuthenticateUserController();
 const showUserController = new ShowUserController();
 
+const createHabitController = new CreateHabitController();
+
 router.post("/user", createUserController.handle);
 router.post("/login", authenticateUserController.handle);
+
+router.post("/habit", createHabitController.handle);
 
 router.put("/user/:idusuario", updateUserController.handle);
 router.put("/password/:idusuario", updatePasswordController.handle);
