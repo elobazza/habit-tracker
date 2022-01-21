@@ -1,4 +1,4 @@
-import { json, Request, Response } from "express";
+import { Request, Response } from "express";
 import { UpdateUserService } from "../services/UpdateUserService";
 
 class UpdateUserController {

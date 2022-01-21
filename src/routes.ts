@@ -6,6 +6,7 @@ import { DeleteHabitController } from "./controllers/DeleteHabitController";
 import { ListAllHabitsByUserController } from "./controllers/ListAllHabitsByUserController";
 import { ListActiveHabitsByUserController } from "./controllers/ListHabitController";
 import { ShowUserController } from "./controllers/ShowUserController";
+import { UpdateHabitController } from "./controllers/UpdateHabitController";
 import { UpdatePasswordController } from "./controllers/UpdatePasswordController";
 import { UpdateUserController } from "./controllers/UpdateUserController";
 
@@ -20,6 +21,7 @@ const showUserController = new ShowUserController();
 
 //HABITS
 const createHabitController = new CreateHabitController();
+const updateHabitController = new UpdateHabitController();
 const deleteHabitController = new DeleteHabitController();
 const listHabitController = new ListActiveHabitsByUserController();
 const listAllHabitController = new ListAllHabitsByUserController();
@@ -33,6 +35,8 @@ router.post("/habit", createHabitController.handle);
 //PUT
 router.put("/user/:idusuario", updateUserController.handle);
 router.put("/password/:idusuario", updatePasswordController.handle);
+
+router.put("/habit/:idhabito", updateHabitController.handle);
 
 
 //GET
