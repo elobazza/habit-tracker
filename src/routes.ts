@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
+import { CreateAlertController } from "./controllers/CreateAlertController";
 import { CreateHabitController } from "./controllers/CreateHabitController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { DeleteHabitController } from "./controllers/DeleteHabitController";
@@ -26,11 +27,16 @@ const deleteHabitController = new DeleteHabitController();
 const listHabitController = new ListActiveHabitsByUserController();
 const listAllHabitController = new ListAllHabitsByUserController();
 
+//ALERTS
+const createAlertController = new CreateAlertController();
+
 //POST
 router.post("/user", createUserController.handle);
 router.post("/login", authenticateUserController.handle);
 
 router.post("/habit", createHabitController.handle);
+
+router.post("/alert/:habito", createAlertController.handle);
 
 //PUT
 router.put("/user/:idusuario", updateUserController.handle);
