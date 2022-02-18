@@ -17,10 +17,7 @@ class Habit {
     ativo: boolean;
 
     @Column()
-    icone: string;
-
-    @Column()
-    cor: string;
+    horario: string;
 
     @JoinColumn({ name: "usuario" })
     @ManyToOne(() => User)

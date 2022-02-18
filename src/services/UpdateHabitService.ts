@@ -6,12 +6,11 @@ interface IHabitRequest {
     nome: string;
     descricao: string;
     ativo: boolean;
-    icone: string;
-    cor: string;
+    horario: string;
 }
 
 class UpdateHabitService {
-    async execute({ idhabito, nome, descricao, ativo, icone, cor }: IHabitRequest) {
+    async execute({ idhabito, nome, descricao, ativo, horario }: IHabitRequest) {
         const habitRepositories = getCustomRepository(HabitRepositories);
 
         let habit = await habitRepositories.findOne({
@@ -21,8 +20,7 @@ class UpdateHabitService {
         habit.nome = nome;
         habit.descricao = descricao;
         habit.ativo = ativo;
-        habit.icone = icone;
-        habit.cor = cor;
+        habit.horario = horario;
 
         await habitRepositories.update(idhabito, habit);
 

@@ -1,10 +1,8 @@
 import { Router } from "express";
 import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
-import { CreateAlertController } from "./controllers/CreateAlertController";
 import { CreateHabitController } from "./controllers/CreateHabitController";
 import { CreateUserController } from "./controllers/CreateUserController";
 import { DeleteHabitController } from "./controllers/DeleteHabitController";
-import { ListAlertsByHabitController } from "./controllers/ListAlertsByHabitController";
 import { ListAllHabitsByUserController } from "./controllers/ListAllHabitsByUserController";
 import { ListActiveHabitsByUserController } from "./controllers/ListHabitController";
 import { ShowUserController } from "./controllers/ShowUserController";
@@ -28,17 +26,12 @@ const deleteHabitController = new DeleteHabitController();
 const listHabitController = new ListActiveHabitsByUserController();
 const listAllHabitController = new ListAllHabitsByUserController();
 
-//ALERTS
-const createAlertController = new CreateAlertController();
-const listAlertsByHabitController = new ListAlertsByHabitController();
-
 //POST
 router.post("/user", createUserController.handle);
 router.post("/login", authenticateUserController.handle);
 
 router.post("/habit", createHabitController.handle);
 
-router.post("/alert/:habito", createAlertController.handle);
 
 //PUT
 router.put("/user/:idusuario", updateUserController.handle);
@@ -51,7 +44,6 @@ router.put("/habit/:idhabito", updateHabitController.handle);
 router.get("/user/:idusuario", showUserController.handle);
 router.get("/habit/:idusuario", listHabitController.handle);
 router.get("/all-habits/:idusuario", listAllHabitController.handle);
-router.get("/alerts/:idhabito", listAlertsByHabitController.handle);
 
 //DELETE
 router.delete("/habit/:idhabito", deleteHabitController.handle);

@@ -5,13 +5,12 @@ interface IHabitRequest {
     nome: string;
     descricao: string;
     ativo: boolean;
-    icone: string;
-    cor: string;
+    horario: string;
     usuario: string;
 }
 
 class CreateHabitService {
-    async execute({ nome, descricao, ativo, icone, cor, usuario }: IHabitRequest) {
+    async execute({ nome, descricao, ativo, horario, usuario }: IHabitRequest) {
         const habitsRepository = getCustomRepository(HabitRepositories);
 
 
@@ -28,8 +27,7 @@ class CreateHabitService {
             nome,
             descricao,
             ativo,
-            icone,
-            cor,
+            horario,
             usuario
         });
 

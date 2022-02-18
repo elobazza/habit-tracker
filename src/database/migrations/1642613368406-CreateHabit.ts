@@ -32,12 +32,8 @@ export class CreateHabit1642613368406 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name: "icone",
-                        type: "varchar(250)",
-                    },
-                    {
-                        name: "cor",
-                        type: "varchar(250)",
+                        name: "horario",
+                        type: "varchar(5)",
                     },
                 ],
                 foreignKeys: [
